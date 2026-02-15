@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تحدي رمضان</title>
+<link rel="icon" type="image/png" href="./img/logo.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+<div class="container-fluid py-4">
+    <div class="top-bar mb-4">
+        <h2>تحدي رمضان</h2>
+        <div class="controls">
+            <select id="weekFilter" class="form-select">
+                <option value="all">كل الأيام</option>
+                <option value="1">الأسبوع 1</option>
+                <option value="2">الأسبوع 2</option>
+                <option value="3">الأسبوع 3</option>
+                <option value="4">الأسبوع 4</option>
+                <option value="5">الأسبوع 5</option>
+            </select>
+            <button id="modeToggle" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="exportJSON" class="btn btn-success">
+                <i class="fa-solid fa-file-arrow-down"></i>
+            </button>
+            <button id="importJSON" class="btn btn-secondary">
+                <i class="fa-solid fa-file-arrow-up"></i>
+            </button>
+            <button id="exportPDF" class="btn btn-danger">
+                <i class="fa-solid fa-file-pdf"></i>
+            </button>
+            <button id="clearAll" class="btn btn-warning">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+            <input type="file" id="jsonInput" accept="application/json" hidden>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <i class="fa-solid fa-mosque stat-icon"></i>
+                <h6>إجمالي الصلوات</h6>
+                <h3 id="totalPrayers">0</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <i class="fa-solid fa-book-quran stat-icon"></i>
+                <h6>إجمالي الأجزاء</h6>
+                <h3 id="totalReading">0</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <i class="fa-solid fa-chart-line stat-icon"></i>
+                <h6>نسبة الإنجاز</h6>
+                <h3 id="percentage">0%</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <i class="fa-solid fa-calendar-check stat-icon"></i>
+                <h6>الأيام المكتملة</h6>
+                <h3 id="completedDays">0</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-6">
+            <canvas id="prayerChart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="readingChart"></canvas>
+        </div>
+    </div>
+
+    <div class="card p-3">
+        <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+                <thead>
+                    <tr>
+                        <th>اليوم</th>
+                        <th>فجر</th>
+                        <th>ظهر</th>
+                        <th>عصر</th>
+                        <th>مغرب</th>
+                        <th>عشاء</th>
+                        <th>جزء</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="./script/script.js"></script>
+</body>
+</html>
